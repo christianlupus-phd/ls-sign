@@ -18,6 +18,8 @@ jobs:
       #     use-github-auto-merge: true
       #     target: minor
       #     target-indirect: major
+      - name: Checkout code
+        uses: actions/checkout@v3
       - name: Trigger auto-merge
         if: github.event.pull_request.user.login == 'dependabot[bot]'
         env:
