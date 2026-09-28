@@ -1,8 +1,8 @@
 name: Automerge dependabot
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   pull_request:
 
 jobs:
@@ -12,9 +12,14 @@ jobs:
       pull-requests: write
       contents: write
     steps:
-      - name: Github Action Merge Dependabot
-        uses: fastify/github-action-merge-dependabot@v3.11.2
-        with:
-          use-github-auto-merge: true
-          target: minor
-          target-indirect: major
+      # - name: Github Action Merge Dependabot
+      #   uses: fastify/github-action-merge-dependabot@v3.11.2
+      #   with:
+      #     use-github-auto-merge: true
+      #     target: minor
+      #     target-indirect: major
+      - name: Trigger auto-merge
+        if: github.event.pull_request.user.login == 'dependabot[bot]'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh pr merge ${{ github.event.pull_request.number }} --auto --squash
