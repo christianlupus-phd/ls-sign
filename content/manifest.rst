@@ -4,24 +4,24 @@ Layered Standard Storage
 ########################
 
 .. note::
-    The layered standard requires a fixed folder in the* ``extra`` *directory in the FMU file.
+    The layered standard requires a fixed folder in the ``extra`` directory in the FMU file.
 
-The *ls-sign* layered standard must use the folder ``extra/de.eks-intec.fmi.ls-sign`` within the zipped FMU bundle.
+The **ls-sign** layered standard must use the folder ``extra/de.eks-intec.fmi.ls-sign`` within the zipped FMU bundle.
 
 Layered Standard Manifest
 =========================
 
-The manifest file signals to the importer that the FMU supports this layered standard.
-The importer must try to verify the signature as described in this standard.
-If the FMU could not be verified, the importer should provide a error message to the user.
-Depending on the configuration, the importer must refuse to call or load any library code inside the FMU.
+The existence of the layered standard manifest file signals to the importer that the FMU supports this layered standard.
+The importer must try to verify the signature as described in this standard before loading any part of the FMU.
+If the FMU could not be verified, the importer should provide an error message to the user.
+Depending on the configuration, the importer may refuse to call or load any library code inside the FMU.
 
 As with any layered standard, a layered standard manifest file ``fmi-ls-manifest.xml`` is required.
 
 .. note::
-    The existence of the file ``extra/de.eks-intec.fmi.ls-sign/fmi-ls-manifest.xml`` indicates that the FMU adheres to the *ls-sign* layered standard.
-    This is defined in the core standard.
-    Additionally, some basic information about the layered standard is given in this file.
+    *The existence of the file* ``extra/de.eks-intec.fmi.ls-sign/fmi-ls-manifest.xml`` *indicates that the FMU adheres to the* **ls-sign** *layered standard.*
+    *This is defined in the core standard.*
+    *Additionally, some basic information about the layered standard is given in this file.*
 
 .. list-table::
     :header-rows: 1
@@ -56,7 +56,7 @@ As with any layered standard, a layered standard manifest file ``fmi-ls-manifest
             fmi-ls:fmi-ls-description="Layered standard for handling cryptographic trust in FMUs"/>
 
 The importer must check the version of the layered standard.
-If a newer major version [#major-part]_ in the manifest is found than the importer knows, the FMU must be rejected as signed invalidly.
+If a newer major version [#major-part]_ in the manifest is found than the importer understands, the FMU must be rejected as invalidly signed.
 
 .. _crypto-file:
 
@@ -69,4 +69,4 @@ The detailed structure is described in the next chapters.
 
 .. [#major-part] *The first digit of the semantic version string*
 
-.. [#lspath] *The path of this layered standard is* ``extra/de.eks-intec.fmi.ls-sign``
+.. [#lspath] *The path of this layered standard is* ``extra/de.eks-intec.fmi.ls-sign``.

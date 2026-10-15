@@ -58,8 +58,8 @@ In key parts of this document, non-normative examples are used to help understan
 
 Conventions used in this document:
 
-- Non-normative text is given in square brackets in italic font:
-  [Especially examples are defined in this style.]
+- Non-normative text is given in italic font:
+  *Especially examples are defined in this style.*
 
   .. note::
         Should be finished later on.
@@ -70,16 +70,10 @@ Conventions used in this document:
 Rough outline of the approach
 =============================
 
-The FMU is first created using the exporter in a classical way.
+The FMU is first created using the corresponding exporter in a classical way.
 Before actually bundling the FMU into a zipped archive, the existing files are hashed and cryptographically signed.
-The signature is added to the bundle and everything is zipped.
+The signature is added to the bundle and everything is packed as required by the FMI standard [FMI]_.
 
-The importer checks the signature and hashes of the embedded files before actually running the FMU.
-This ensures that no binary data is executed before trust in the FMU's content is established.
+The importer checks the signature and hashes of the embedded files before actually running any part of the FMU.
+This ensures that no binary data must be executed before trust in the FMU's content is established.
 
-.. note::
-    
-    T.B.D.
-
-- No binary code execution
-- Hashing + signture
